@@ -8,7 +8,7 @@ async function authToken(req,res,next){
 
         if(!token){
             return res.status(200).json({
-                message : "Please Login...!",
+                message : "Please Login First...!",
                 error : true,
                 success : false
             })
