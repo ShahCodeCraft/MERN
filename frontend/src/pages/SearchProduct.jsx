@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom'
 import SummaryApi from '../common'
 import VerticalCard from '../components/VerticalCard'
 
+import data_not_found from "../assest/banner/data_not_found.png"
+
 const SearchProduct = () => {
     const query = useLocation()
     const [data,setData] = useState([])
@@ -35,7 +37,7 @@ const SearchProduct = () => {
 
       {
         data.length === 0 && !loading && (
-           <p className='bg-white text-lg text-center p-4'>No Data Found....</p>
+           <p className='bg-white text-lg text-center p-4 flex items-center justify-center gap-3'><img src={data_not_found} className='h-16 w-16' alt='' />Data not found....</p>
         )
       }
 
