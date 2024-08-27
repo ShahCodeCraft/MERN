@@ -1,205 +1,535 @@
-import React, { useContext, useEffect, useState } from 'react'
-import SummaryApi from '../common'
-import Context from '../context'
-import displayINRCurrency from '../helpers/displayCurrency'
+// import React, { useContext, useEffect, useState } from 'react'
+// import SummaryApi from '../common'
+// import Context from '../context'
+// import displayINRCurrency from '../helpers/displayCurrency'
+// import { MdDelete } from "react-icons/md";
+// import { useNavigate } from 'react-router-dom';
+
+
+
+// const Cart = () => {
+//     const navigate = useNavigate();
+
+//     const [data,setData] = useState([])
+//     const [loading,setLoading] = useState(false)
+//     const context = useContext(Context)
+//     const loadingCart = new Array(4).fill(null)
+
+
+//     const fetchData = async() =>{
+        
+//         const response = await fetch(SummaryApi.addToCartProductView.url,{
+//             method : SummaryApi.addToCartProductView.method,
+//             credentials : 'include',
+//             headers : {
+//                 "content-type" : 'application/json'
+//             },
+//         })
+       
+
+//         const responseData = await response.json()
+
+//         if(responseData.success){
+//             setData(responseData.data)
+//         }
+
+
+//     }
+
+//     const handleLoading = async() =>{
+//         await fetchData()
+//     }
+
+//     useEffect(()=>{
+//         setLoading(true)
+//         handleLoading()
+//          setLoading(false)
+//     },[])
+
+
+//     const increaseQty = async(id,qty) =>{
+//         const response = await fetch(SummaryApi.updateCartProduct.url,{
+//             method : SummaryApi.updateCartProduct.method,
+//             credentials : 'include',
+//             headers : {
+//                 "content-type" : 'application/json'
+//             },
+//             body : JSON.stringify(
+//                 {   
+//                     _id : id,
+//                     quantity : qty + 1
+//                 }
+//             )
+//         })
+
+//         const responseData = await response.json()
+
+
+//         if(responseData.success){
+//             fetchData()
+//         }
+//     }
+
+
+//     const decraseQty = async(id,qty) =>{
+//        if(qty >= 2){
+//             const response = await fetch(SummaryApi.updateCartProduct.url,{
+//                 method : SummaryApi.updateCartProduct.method,
+//                 credentials : 'include',
+//                 headers : {
+//                     "content-type" : 'application/json'
+//                 },
+//                 body : JSON.stringify(
+//                     {   
+//                         _id : id,
+//                         quantity : qty - 1
+//                     }
+//                 )
+//             })
+
+//             const responseData = await response.json()
+
+
+//             if(responseData.success){
+//                 fetchData()
+//             }
+//         }
+//     }
+
+//     const deleteCartProduct = async(id)=>{
+//         const response = await fetch(SummaryApi.deleteCartProduct.url,{
+//             method : SummaryApi.deleteCartProduct.method,
+//             credentials : 'include',
+//             headers : {
+//                 "content-type" : 'application/json'
+//             },
+//             body : JSON.stringify(
+//                 {   
+//                     _id : id,
+//                 }
+//             )
+//         })
+
+//         const responseData = await response.json()
+
+//         if(responseData.success){
+//             fetchData()
+//             context.fetchUserAddToCart()
+//         }
+//     }
+
+//     const totalQty = data.reduce((previousValue,currentValue)=> previousValue + currentValue.quantity,0)
+//     const totalPrice = data.reduce((preve,curr)=> preve + (curr.quantity * curr?.productId?.sellingPrice) ,0)
+
+
+// const handlePayment = async() =>{
+//     const response = await fetch(SummaryApi.payment.url,{
+//         method : SummaryApi.payment.method,
+//         credentials : 'include',
+//         headers : {
+//             "content-type" : 'application/json'
+//         },
+//         body : JSON.stringify({
+//             artItems : data
+//         })
+//     })
+//     const responseData = await response.json()
+//     // console.log("payment response",responseData)
+// }
+
+
+//   return (
+//     <div className='container mx-auto'>
+        
+//         <div className='text-center text-lg my-3'>
+//             {
+//                 data.length === 0 && !loading && (
+//                     <p className='bg-white py-5'>No Data</p>
+//                 )
+//             }
+//         </div>
+
+//         <div className='flex flex-col lg:flex-row gap-10 lg:justify-between p-4'>   
+//                 {/***view product */}
+//                 <div className='w-full max-w-3xl'>
+//                     {
+//                         loading ? (
+//                             loadingCart?.map((el,index) => {
+//                                 return(
+//                                     <div key={el+"Add To Cart Loading"+index} className='w-full bg-slate-200 h-32 my-2 border border-slate-300 animate-pulse rounded'>
+//                                     </div>
+//                                 )
+//                             })
+                             
+//                         ) : (
+//                           data.map((product,index)=>{
+//                            return(
+//                             <div key={product?._id+"Add To Cart Loading"} className='w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]'>
+//                                 <div className='w-32 h-32 bg-slate-200'>
+//                                     <img src={product?.productId?.productImage[0]} className='w-full h-full object-scale-down mix-blend-multiply' />
+//                                 </div>
+//                                 <div className='px-4 py-2 relative'>
+//                                     {/**delete product */}
+//                                     <div className='absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer' onClick={()=>deleteCartProduct(product?._id)}>
+//                                         <MdDelete/>
+//                                     </div>
+
+//                                     <h2 className='text-lg lg:text-xl text-ellipsis line-clamp-1'>{product?.productId?.productName}</h2>
+//                                     <p className='capitalize text-slate-500'>{product?.productId.category}</p>
+//                                     <div className='flex items-center justify-between'>
+//                                             <p className='text-red-600 font-medium text-lg'>{displayINRCurrency(product?.productId?.sellingPrice)}</p>
+//                                             <p className='text-slate-600 font-semibold text-lg'>{displayINRCurrency(product?.productId?.sellingPrice  * product?.quantity)}</p>
+//                                     </div>
+//                                     <div className='flex items-center gap-3 mt-1'>
+//                                         <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded ' onClick={()=>decraseQty(product?._id,product?.quantity)}>-</button>
+//                                         <span>{product?.quantity}</span>
+//                                         <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded ' onClick={()=>increaseQty(product?._id,product?.quantity)}>+</button>
+//                                     </div>
+//                                 </div>    
+//                             </div>
+//                            )
+//                           })
+//                         )
+//                     }
+//                 </div>
+
+
+//                 {/***summary  */}
+//                 {
+//                     data[0] && (
+//                         <div className='mt-5 lg:mt-0 w-full max-w-sm'>
+//                         {
+//                             loading ? (
+//                             <div className='h-36 bg-slate-200 border border-slate-300 animate-pulse'>
+                                
+//                             </div>
+//                             ) : (
+//                                 <div className='h-36 bg-white'>
+//                                     <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
+//                                     <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
+//                                         <p>Quantity</p>
+//                                         <p>{totalQty}</p>
+//                                     </div>
+
+//                                     <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
+//                                         <p>Total Price</p>
+//                                         <p>{displayINRCurrency(totalPrice)}</p>    
+//                                     </div>
+
+//                                     <button className='bg-blue-600 p-2 text-white w-full mt-2' onClick={handlePayment}>Payment</button>
+
+//                                 </div>
+//                             )
+//                         }
+//                 </div>
+//                     )
+//                 }
+                
+//         </div>
+//     </div>
+//   )
+// }
+
+// export default Cart
+
+import React, { useContext, useEffect, useState } from 'react';
+import SummaryApi from '../common';
+import Context from '../context';
+import displayINRCurrency from '../helpers/displayCurrency';
 import { MdDelete } from "react-icons/md";
 
 const Cart = () => {
-    const [data,setData] = useState([])
-    const [loading,setLoading] = useState(false)
-    const context = useContext(Context)
-    const loadingCart = new Array(4).fill(null)
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const context = useContext(Context);
+    const loadingCart = new Array(4).fill(null);
 
-
-    const fetchData = async() =>{
-        
-        const response = await fetch(SummaryApi.addToCartProductView.url,{
-            method : SummaryApi.addToCartProductView.method,
-            credentials : 'include',
-            headers : {
-                "content-type" : 'application/json'
+    const fetchData = async () => {
+        const response = await fetch(SummaryApi.addToCartProductView.url, {
+            method: SummaryApi.addToCartProductView.method,
+            credentials: 'include',
+            headers: {
+                "content-type": 'application/json'
             },
-        })
-       
+        });
 
-        const responseData = await response.json()
+        const responseData = await response.json();
 
-        if(responseData.success){
-            setData(responseData.data)
+        if (responseData.success) {
+            setData(responseData.data);
         }
+    };
 
+    const handleLoading = async () => {
+        await fetchData();
+    };
 
-    }
+    useEffect(() => {
+        setLoading(true);
+        handleLoading();
+        setLoading(false);
+    }, []);
 
-    const handleLoading = async() =>{
-        await fetchData()
-    }
-
-    useEffect(()=>{
-        setLoading(true)
-        handleLoading()
-         setLoading(false)
-    },[])
-
-
-    const increaseQty = async(id,qty) =>{
-        const response = await fetch(SummaryApi.updateCartProduct.url,{
-            method : SummaryApi.updateCartProduct.method,
-            credentials : 'include',
-            headers : {
-                "content-type" : 'application/json'
+    const increaseQty = async (id, qty) => {
+        const response = await fetch(SummaryApi.updateCartProduct.url, {
+            method: SummaryApi.updateCartProduct.method,
+            credentials: 'include',
+            headers: {
+                "content-type": 'application/json'
             },
-            body : JSON.stringify(
-                {   
-                    _id : id,
-                    quantity : qty + 1
-                }
-            )
-        })
-
-        const responseData = await response.json()
-
-
-        if(responseData.success){
-            fetchData()
-        }
-    }
-
-
-    const decraseQty = async(id,qty) =>{
-       if(qty >= 2){
-            const response = await fetch(SummaryApi.updateCartProduct.url,{
-                method : SummaryApi.updateCartProduct.method,
-                credentials : 'include',
-                headers : {
-                    "content-type" : 'application/json'
-                },
-                body : JSON.stringify(
-                    {   
-                        _id : id,
-                        quantity : qty - 1
-                    }
-                )
+            body: JSON.stringify({
+                _id: id,
+                quantity: qty + 1
             })
+        });
 
-            const responseData = await response.json()
+        const responseData = await response.json();
 
+        if (responseData.success) {
+            fetchData();
+        }
+    };
 
-            if(responseData.success){
-                fetchData()
+    const decraseQty = async (id, qty) => {
+        if (qty >= 2) {
+            const response = await fetch(SummaryApi.updateCartProduct.url, {
+                method: SummaryApi.updateCartProduct.method,
+                credentials: 'include',
+                headers: {
+                    "content-type": 'application/json'
+                },
+                body: JSON.stringify({
+                    _id: id,
+                    quantity: qty - 1
+                })
+            });
+
+            const responseData = await response.json();
+
+            if (responseData.success) {
+                fetchData();
             }
         }
-    }
+    };
 
-    const deleteCartProduct = async(id)=>{
-        const response = await fetch(SummaryApi.deleteCartProduct.url,{
-            method : SummaryApi.deleteCartProduct.method,
-            credentials : 'include',
-            headers : {
-                "content-type" : 'application/json'
+    const deleteCartProduct = async (id) => {
+        const response = await fetch(SummaryApi.deleteCartProduct.url, {
+            method: SummaryApi.deleteCartProduct.method,
+            credentials: 'include',
+            headers: {
+                "content-type": 'application/json'
             },
-            body : JSON.stringify(
-                {   
-                    _id : id,
-                }
-            )
-        })
+            body: JSON.stringify({
+                _id: id,
+            })
+        });
 
-        const responseData = await response.json()
+        const responseData = await response.json();
 
-        if(responseData.success){
-            fetchData()
-            context.fetchUserAddToCart()
+        if (responseData.success) {
+            fetchData();
+            context.fetchUserAddToCart();
         }
-    }
+    };
 
-    const totalQty = data.reduce((previousValue,currentValue)=> previousValue + currentValue.quantity,0)
-    const totalPrice = data.reduce((preve,curr)=> preve + (curr.quantity * curr?.productId?.sellingPrice) ,0)
-  return (
-    <div className='container mx-auto'>
-        
-        <div className='text-center text-lg my-3'>
-            {
-                data.length === 0 && !loading && (
-                    <p className='bg-white py-5'>No Data</p>
-                )
+    // const handlePayment = async () => {
+    //     // Load Razorpay script
+    //     const script = document.createElement('script');
+    //     script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    //     script.async = true;
+    //     document.body.appendChild(script);
+
+    //     script.onload = async () => {
+    //         try {
+    //             const response = await fetch(SummaryApi.payment.url, {
+    //                 method: SummaryApi.payment.method,
+    //                 credentials: 'include',
+    //                 headers: {
+    //                     "content-type": 'application/json'
+    //                 },
+    //                 body: JSON.stringify({
+    //                     cartItems: data
+    //                 })
+    //             });
+
+    //             const responseData = await response.json();
+
+    //             if (responseData?.orderId) {
+    //                 const options = {
+    //                     key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay key ID
+    //                     amount: responseData.amount, // Amount in paise (1 INR = 100 paise)
+    //                     currency: 'INR',
+    //                     name: 'Your Company Name',
+    //                     description: 'Order Description',
+    //                     order_id: responseData.orderId, // Order ID generated in backend
+    //                     handler: function (response) {
+    //                         // Handle payment success here
+    //                         console.log('Payment Successful', response);
+    //                     },
+    //                     prefill: {
+    //                         name: 'Customer Name',
+    //                         email: 'customer@example.com',
+    //                         contact: '9999999999'
+    //                     },
+    //                     notes: {
+    //                         address: 'Customer Address'
+    //                     },
+    //                     theme: {
+    //                         color: '#F37254'
+    //                     }
+    //                 };
+
+    //                 const rzp = new window.Razorpay(options);
+    //                 rzp.open();
+    //             } else {
+    //                 console.error('Failed to create order');
+    //             }
+    //         } catch (error) {
+    //             console.error('Error during payment process', error);
+    //         }
+    //     };
+    // };
+
+    const handlePayment = async () => {
+        const script = document.createElement('script');
+        script.src = "https://checkout.razorpay.com/v1/checkout.js";
+        script.async = true;
+        document.body.appendChild(script);
+    
+        script.onload = async () => {
+            try {
+                console.log("Razorpay script loaded successfully.");
+                const response = await fetch(SummaryApi.payment.url, {
+                    method: SummaryApi.payment.method,
+                    credentials: 'include',
+                    headers: {
+                        "content-type": 'application/json'
+                    },
+                    body: JSON.stringify({
+                        cartItems: data
+                    })
+                });
+    
+                const responseData = await response.json();
+                console.log("Payment API response: ", responseData);
+    
+                if (responseData?.id) {  // Change to match backend response
+                    const options = {
+                        key: responseData.key_id,  // Make sure key_id is coming from responseData
+                        amount: responseData.amount, // Amount in paise (1 INR = 100 paise)
+                        currency: 'INR',
+                        name: responseData.name || 'Your Company Name',
+                        description: 'Order Description',
+                        order_id: responseData.id,  // Using id from backend
+                        handler: function (paymentResponse) {
+                            console.log('Payment Successful', paymentResponse);
+                            // You can handle success logic here
+                        },
+                        prefill: {
+                            name: responseData.name || 'Customer Name',
+                            email: responseData.email || 'customer@example.com',
+                            contact: responseData.contact || '9999999999'
+                        },
+                        notes: {
+                            address: 'Customer Address'
+                        },
+                        theme: {
+                            color: '#F37254'
+                        }
+                    };
+    
+                    const rzp = new window.Razorpay(options);
+                    rzp.open();
+                } else {
+                    console.error('Failed to create order');
+                }
+            } catch (error) {
+                console.error('Error during payment process', error);
             }
-        </div>
+        };
+    
+        script.onerror = () => {
+            console.error("Failed to load Razorpay script");
+        };
+    };
+    
+    // The rest of your Cart component remains unchanged
+    
+    
 
-        <div className='flex flex-col lg:flex-row gap-10 lg:justify-between p-4'>   
-                {/***view product */}
+    const totalQty = data.reduce((previousValue, currentValue) => previousValue + currentValue.quantity, 0);
+    const totalPrice = data.reduce((preve, curr) => preve + (curr.quantity * curr?.productId?.sellingPrice), 0);
+
+    return (
+        <div className='container mx-auto'>
+            <div className='text-center text-lg my-3'>
+                {data.length === 0 && !loading && (
+                    <p className='bg-white py-5'>No Data</p>
+                )}
+            </div>
+
+            <div className='flex flex-col lg:flex-row gap-10 lg:justify-between p-4'>
+                {/* View product */}
                 <div className='w-full max-w-3xl'>
-                    {
-                        loading ? (
-                            loadingCart?.map((el,index) => {
-                                return(
-                                    <div key={el+"Add To Cart Loading"+index} className='w-full bg-slate-200 h-32 my-2 border border-slate-300 animate-pulse rounded'>
-                                    </div>
-                                )
-                            })
-                             
-                        ) : (
-                          data.map((product,index)=>{
-                           return(
-                            <div key={product?._id+"Add To Cart Loading"} className='w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]'>
+                    {loading ? (
+                        loadingCart?.map((el, index) => (
+                            <div key={el + "Add To Cart Loading" + index} className='w-full bg-slate-200 h-32 my-2 border border-slate-300 animate-pulse rounded'>
+                            </div>
+                        ))
+                    ) : (
+                        data.map((product, index) => (
+                            <div key={product?._id + "Add To Cart Loading"} className='w-full bg-white h-32 my-2 border border-slate-300 rounded grid grid-cols-[128px,1fr]'>
                                 <div className='w-32 h-32 bg-slate-200'>
                                     <img src={product?.productId?.productImage[0]} className='w-full h-full object-scale-down mix-blend-multiply' />
                                 </div>
                                 <div className='px-4 py-2 relative'>
-                                    {/**delete product */}
-                                    <div className='absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer' onClick={()=>deleteCartProduct(product?._id)}>
-                                        <MdDelete/>
+                                    {/* Delete product */}
+                                    <div className='absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer' onClick={() => deleteCartProduct(product?._id)}>
+                                        <MdDelete />
                                     </div>
 
                                     <h2 className='text-lg lg:text-xl text-ellipsis line-clamp-1'>{product?.productId?.productName}</h2>
                                     <p className='capitalize text-slate-500'>{product?.productId.category}</p>
                                     <div className='flex items-center justify-between'>
-                                            <p className='text-red-600 font-medium text-lg'>{displayINRCurrency(product?.productId?.sellingPrice)}</p>
-                                            <p className='text-slate-600 font-semibold text-lg'>{displayINRCurrency(product?.productId?.sellingPrice  * product?.quantity)}</p>
+                                        <p className='text-red-600 font-medium text-lg'>{displayINRCurrency(product?.productId?.sellingPrice)}</p>
+                                        <p className='text-slate-600 font-semibold text-lg'>{displayINRCurrency(product?.productId?.sellingPrice * product?.quantity)}</p>
                                     </div>
                                     <div className='flex items-center gap-3 mt-1'>
-                                        <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded ' onClick={()=>decraseQty(product?._id,product?.quantity)}>-</button>
+                                        <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded ' onClick={() => decraseQty(product?._id, product?.quantity)}>-</button>
                                         <span>{product?.quantity}</span>
-                                        <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded ' onClick={()=>increaseQty(product?._id,product?.quantity)}>+</button>
+                                        <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded ' onClick={() => increaseQty(product?._id, product?.quantity)}>+</button>
                                     </div>
-                                </div>    
-                            </div>
-                           )
-                          })
-                        )
-                    }
-                </div>
-
-
-                {/***summary  */}
-                <div className='mt-5 lg:mt-0 w-full max-w-sm'>
-                        {
-                            loading ? (
-                            <div className='h-36 bg-slate-200 border border-slate-300 animate-pulse'>
-                                
-                            </div>
-                            ) : (
-                                <div className='h-36 bg-white'>
-                                    <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
-                                    <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
-                                        <p>Quantity</p>
-                                        <p>{totalQty}</p>
-                                    </div>
-
-                                    <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
-                                        <p>Total Price</p>
-                                        <p>{displayINRCurrency(totalPrice)}</p>    
-                                    </div>
-
-                                    <button className='bg-blue-600 p-2 text-white w-full mt-2'>Payment</button>
-
                                 </div>
-                            )
-                        }
+                            </div>
+                        ))
+                    )}
                 </div>
-        </div>
-    </div>
-  )
-}
 
-export default Cart
+                {/* Summary */}
+                {data[0] && (
+                    <div className='mt-5 lg:mt-0 w-full max-w-sm'>
+                        {loading ? (
+                            <div className='h-36 bg-slate-200 border border-slate-300 animate-pulse'>
+                            </div>
+                        ) : (
+                            <div className='h-36 bg-white'>
+                                <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
+                                <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
+                                    <p>Quantity</p>
+                                    <p>{totalQty}</p>
+                                </div>
+                                <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
+                                    <p>Total Price</p>
+                                    <p>{displayINRCurrency(totalPrice)}</p>
+                                </div>
+                                <button className='bg-blue-600 p-2 text-white w-full mt-2' onClick={handlePayment}>Payment</button>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default Cart;

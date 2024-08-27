@@ -11,6 +11,7 @@ import SummaryApi from './common';
 import Context from './context';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from './store/userSlice';
+import Address from './pages/Address'
 
 function App() {
   const dispatch = useDispatch()
@@ -66,6 +67,7 @@ const fetchUserAddToCart = async()=>{
           <Outlet/>
         </main>
         <Footer/>
+        {/* <Address/> */}
       </Context.Provider>
    </>
   )
