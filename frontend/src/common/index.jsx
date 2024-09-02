@@ -178,6 +178,15 @@ const SummaryApi = {
     allOrder : {
         url : `${backendDomin}/api/all-order`,
         method : 'get'
+    },
+
+    feedBack : {
+        url : `${backendDomin}/api/feedback`,
+        method : 'post'
+    },
+    contact : {
+        url : `${backendDomin}/api/contact`,
+        method : 'post'
     }
     
 }

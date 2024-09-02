@@ -76,7 +76,7 @@ function AdminPanel() {
   return (
     <div className='min-h-[calc(100vh-120px)] flex bg-red-200' >
 
-      <aside className='bg-white min-h-full  w-full  max-w-60 customShadow'>
+      <aside className='bg-gray-100 dark:bg-gray-800 min-h-full  w-full  max-w-60 customShadow'>
               <div className='h-32  flex justify-center items-center flex-col'>
                     <div className='text-5xl cursor-pointer relative flex justify-center'>
                         {
@@ -94,8 +94,8 @@ function AdminPanel() {
                  {/***navigation */}       
                 <div>   
                     <nav className='grid p-4'>
-                        <Link to={"all-users"} className='px-2 py-1 hover:bg-slate-100'>All Users</Link>
-                        <Link to={"all-products"} className='px-2 py-1 hover:bg-slate-100'>All product</Link>
+                        <Link to={"all-users"} className='px-2 py-1 hover:bg-slate-400 dark:hover:bg-slate-900 '>All Users</Link>
+                        <Link to={"all-products"} className='px-2 py-1 hover:bg-slate-400 dark:hover:bg-slate-900'>All product</Link>
                     </nav>
                 </div>
       </aside>

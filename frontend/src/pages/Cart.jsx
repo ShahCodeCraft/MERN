@@ -370,8 +370,8 @@ const Cart = () => {
     }
 
     useEffect(()=>{
-        setLoading(true)
-        handleLoading()
+         setLoading(true)
+         handleLoading()
          setLoading(false)
     },[])
 

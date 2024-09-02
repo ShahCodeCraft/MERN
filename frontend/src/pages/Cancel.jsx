@@ -1,6 +1,6 @@
 import React from 'react'
-// import CANCELIMAGE from '../assest/cancel.gif'
-import CANCELIMAGE from '../assest/banner/data_not_found.png'
+import CANCELIMAGE from '../assest/cancel.gif'
+// import CANCELIMAGE from '../assest/banner/data_not_found.png'
 import { Link } from 'react-router-dom'
 
 const Cancel = () => {

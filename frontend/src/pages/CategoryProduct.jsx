@@ -98,9 +98,9 @@ const CategoryProduct = () => {
        {/***desktop version */}
        <div className='hidden lg:grid grid-cols-[200px,1fr]'>
            {/***left side */}
-           <div className='bg-white p-2 min-h-[calc(100vh-120px)] overflow-y-scroll'>
+           <div className='bg-white dark:bg-slate-900 p-2 min-h-[calc(100vh-120px)] overflow-y-scroll'>
                 {/**sort by */}
-                <div className=''>
+                <div className='  '>
                     <h3 className='text-base uppercase font-medium text-slate-500 border-b pb-1 border-slate-300'>Sort by</h3>
 
                     <form className='text-sm flex flex-col gap-2 py-2'>
@@ -141,7 +141,7 @@ const CategoryProduct = () => {
 
             {/***right side ( product ) */}
             <div className='px-4'>
-              <p className='font-medium text-slate-800 text-lg my-2'>Search Results : {data.length}</p>
+              <p className='font-medium text-slate-800 dark:text-slate-100 text-lg my-2'>Search Results : {data.length}</p>
 
              <div className='min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]'>
               {
