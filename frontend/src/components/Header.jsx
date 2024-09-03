@@ -12,6 +12,8 @@ import ROLE from '../common/role';
 import Context from '../context';
 import ThemeSwitcher from './ThemeSwitcher';
 
+import { BiSolidShoppingBags } from "react-icons/bi";
+
 import shahStore from "../assest/banner/shah_store1.png";
 
 const Header = () => {
@@ -56,7 +58,7 @@ const Header = () => {
   };
 
   return (
-    <header className='h-16 fixed w-full z-50 bg-white backdrop-filter backdrop-blur-md'>
+    <header className='h-16 fixed w-full z-50 bg-white backdrop-filter backdrop-blur-md flex'>
       <div className='container mx-auto flex items-center justify-between px-4'>
         <div>
           <Link to={"/"}>
@@ -78,15 +80,19 @@ const Header = () => {
         </div>
 
         <div className='flex items-center gap-7'>
-        
         <div>
-          <Link to={"/contact"} className='whitespace-nowrap hidden md:block bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-700 px-2 py-1 text-white dark:text-white rounded-md' onClick={() => setMenuDisplay(prev => !prev)}>
+          <Link to={"/order"} className='whitespace-nowrap hidden md:flex bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:bg-gray-700 px-2 py-1 text-gray-700 dark:text-gray-100 rounded-md' onClick={() => setMenuDisplay(prev => !prev)}>
+          <BiSolidShoppingBags className='mt-1 me-1' /> Orders 
+          </Link>
+        </div>
+
+        <div>
+          <Link to={"/contact"} className='whitespace-nowrap hidden md:block bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:bg-gray-700 px-2 py-1 text-gray-700 dark:text-gray-100 rounded-md' onClick={() => setMenuDisplay(prev => !prev)}>
             Contact
           </Link>
         </div>
 
-{/* Adding Theme Switcher */}
-<ThemeSwitcher />
+
 <div className='relative flex justify-center'>
             {user?._id && (
               <div className='text-3xl cursor-pointer relative flex justify-center text-black dark:text-white' onClick={() => setMenuDisplay(prev => !prev)}>
@@ -130,9 +136,10 @@ const Header = () => {
               </Link>
             )}
           </div>
-          
+          {/* Adding Theme Switcher */}
         </div>
       </div>
+<ThemeSwitcher />
     </header>
   );
 };
