@@ -22,6 +22,18 @@
 // const deleteAddToCartProduct = require('../controller/user/deleteAddToCartProduct')
 // const searchProduct = require('../controller/product/searchProduct')
 // const filterProductController = require('../controller/product/filterProduct')
+<<<<<<< HEAD
+=======
+// const paymentController = require("../controller/order/paymentController")
+
+// const webhooks = require('../controller/order/webhooks');
+// const orderController = require('../controller/order/orderController');
+// const allOrderController = require('../controller/order/allOrderController');
+
+// const ConsultancyForm = require("../controller/ConsultancyForm")
+
+// // const userAddressController = require('../controller/user/userAddress')
+>>>>>>> master
 
 
 
@@ -51,12 +63,28 @@
 // router.post("/update-cart-product",authToken,updateAddToCartProduct)
 // router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 
+<<<<<<< HEAD
+=======
+// // Payment and order
+// router.post("/checkout",authToken,paymentController)
+// router.post('/webhook', webhooks); // Ensure public access for webhook
+// router.get("/order-list", authToken, orderController);
+// router.get("/all-order", authToken, allOrderController);
+
+// router.post("/feedback",authToken,ConsultancyForm)
+
+// // router.post("/shipping",authToken,userAddressController)
+
+>>>>>>> master
 
 
 // module.exports = router
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 const express = require('express')
 
 const router = express.Router()
@@ -81,6 +109,10 @@ const updateAddToCartProduct = require('../controller/user/updateAddToCartProduc
 const deleteAddToCartProduct = require('../controller/user/deleteAddToCartProduct')
 const searchProduct = require('../controller/product/searchProduct')
 const filterProductController = require('../controller/product/filterProduct')
+const paymentController = require('../controller/order/paymentController')
+const webhook = require('../controller/order/webhook')
+const orderController = require('../controller/order/orderController')
+const allOrderController = require('../controller/order/allOrderController')
 
 const paymentController = require('../controller/order/paymentController')
 const webhooks = require('../controller/order/webhook')
@@ -117,6 +149,7 @@ router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 
 //payment and order
 router.post('/checkout',authToken,paymentController)
+<<<<<<< HEAD
 router.post('/webhook',webhooks) // /api/webhook
 router.get("/order-list",authToken,orderController)
 router.get("/all-order",authToken,allOrderController)
@@ -126,4 +159,10 @@ router.get("/all-order",authToken,allOrderController)
 
 
 
+=======
+router.post('/webhook',webhook) // /api/webhook
+router.get("/order-list",authToken,orderController)
+router.get("/all-order",authToken,allOrderController)
+
+>>>>>>> master
 module.exports = router

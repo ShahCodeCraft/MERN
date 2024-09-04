@@ -4,12 +4,92 @@
 // import displayINRCurrency from '../helpers/displayCurrency'
 // import { MdDelete } from "react-icons/md";
 
+<<<<<<< HEAD
+=======
+// const useRazorpay = () => {
+//     const [isLoaded, setIsLoaded] = useState(false);
+  
+//     useEffect(() => {
+//       const script = document.createElement('script');
+//       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+//       script.onload = () => setIsLoaded(true);
+//       document.body.appendChild(script);
+//     }, []);
+  
+//     return isLoaded;
+//   };
+
+
+>>>>>>> master
 // const Cart = () => {
 //     const [data,setData] = useState([])
 //     const [loading,setLoading] = useState(false)
 //     const context = useContext(Context)
 //     const loadingCart = new Array(4).fill(null)
 
+<<<<<<< HEAD
+=======
+//     const isRazorpayLoaded = useRazorpay();
+
+//     const handlePayment = async () => {
+//       if (!isRazorpayLoaded) {
+//         alert('Razorpay SDK is loading, please wait.');
+//         return;
+//       }
+  
+//       const response = await fetch(SummaryApi.payment.url, {
+//         method: SummaryApi.payment.method,
+//         credentials: 'include',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//           cartItems: data,
+//         }),
+//       });
+  
+//       const responseData = await response.json();
+      
+//       console.log("Payment Response",responseData)
+  
+//       if (responseData?.id) {
+//         const options = {
+//           key: responseData.key_id,
+//           amount: responseData.amount,
+//           currency: responseData.currency,
+//           name: responseData.name,
+//           description: 'Order Payment',
+//           order_id: responseData.id,
+//           handler: function (response) {
+//             alert('Payment Successful');
+//             window.location.href = '/success';
+//           },
+//           prefill: {
+//             name: responseData.name,
+//             email: responseData.email,
+//           },
+//           notes: {
+//             address: 'Razorpay Corporate Office',
+//           },
+//           theme: {
+//             color: '#3399cc',
+//           },
+//         };
+  
+//         const razorpayInstance = new window.Razorpay(options);
+//         razorpayInstance.open();
+  
+//         razorpayInstance.on('payment.failed', function (response) {
+//           alert('Payment Failed');
+//           window.location.href = '/cancel';
+//         });
+
+        
+//       }
+//     };
+  
+
+>>>>>>> master
 
 //     const fetchData = async() =>{
         
@@ -36,8 +116,13 @@
 //     }
 
 //     useEffect(()=>{
+<<<<<<< HEAD
 //         setLoading(true)
 //         handleLoading()
+=======
+//          setLoading(true)
+//          handleLoading()
+>>>>>>> master
 //          setLoading(false)
 //     },[])
 
@@ -113,6 +198,10 @@
 //         }
 //     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 //     const totalQty = data.reduce((previousValue,currentValue)=> previousValue + currentValue.quantity,0)
 //     const totalPrice = data.reduce((preve,curr)=> preve + (curr.quantity * curr?.productId?.sellingPrice) ,0)
 //   return (
@@ -172,7 +261,13 @@
 
 
 //                 {/***summary  */}
+<<<<<<< HEAD
 //                 <div className='mt-5 lg:mt-0 w-full max-w-sm'>
+=======
+//                 {
+//                     data[0] && (
+//                         <div className='mt-5 lg:mt-0 w-full max-w-sm'>
+>>>>>>> master
 //                         {
 //                             loading ? (
 //                             <div className='h-36 bg-slate-200 border border-slate-300 animate-pulse'>
@@ -191,12 +286,23 @@
 //                                         <p>{displayINRCurrency(totalPrice)}</p>    
 //                                     </div>
 
+<<<<<<< HEAD
 //                                     <button className='bg-blue-600 p-2 text-white w-full mt-2'>Payment</button>
+=======
+//                                     <button className='bg-blue-600 p-2 text-white w-full mt-2' onClick={handlePayment}>Checkout</button>
+>>>>>>> master
 
 //                                 </div>
 //                             )
 //                         }
+<<<<<<< HEAD
 //                 </div>
+=======
+//                         </div>
+//                     )
+//                 }
+                
+>>>>>>> master
 //         </div>
 //     </div>
 //   )
@@ -205,9 +311,12 @@
 // export default Cart
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> master
 import React, { useContext, useEffect, useState } from 'react'
 import SummaryApi from '../common'
 import Context from '../context'

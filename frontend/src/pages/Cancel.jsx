@@ -1,5 +1,9 @@
 import React from 'react'
 import CANCELIMAGE from '../assest/cancel.gif'
+<<<<<<< HEAD
+=======
+// import CANCELIMAGE from '../assest/banner/data_not_found.png'
+>>>>>>> master
 import { Link } from 'react-router-dom'
 
 const Cancel = () => {

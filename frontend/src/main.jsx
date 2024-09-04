@@ -6,11 +6,18 @@ import { RouterProvider } from 'react-router-dom'
 import router from './routes/index.jsx'
 import { Provider } from 'react-redux'
 import { store } from './store/store.js'
+import { ThemeProvider } from './context/ThemeContext.jsx';
+import Layout from './components/Layout.jsx';
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-    <Provider store={store}>
-       <RouterProvider router={router} />
-    </Provider>
-  // </StrictMode> 
+  <StrictMode>
+    <ThemeProvider>
+      <Provider store={store}>
+        <Layout>
+          <RouterProvider router={router} />
+        </Layout>
+      </Provider>
+    </ThemeProvider>
+  </StrictMode>
 )
+

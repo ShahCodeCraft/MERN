@@ -3,7 +3,7 @@ import shahLogo from "../assest/banner/shah_store1.png"
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-10 pb-6 rounded mt-10">
+    <footer className="bg-gray-950 text-white pt-10 pb-6 rounded mt-10">
       <div className="container mx-auto px-5">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">

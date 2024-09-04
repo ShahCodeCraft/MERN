@@ -90,4 +90,8 @@ const webhooks = async(request,response) => {
     response.status(200).send();
 }
 
+<<<<<<< HEAD
 module.exports = webhooks
+=======
+module.exports = webhooks
+>>>>>>> master

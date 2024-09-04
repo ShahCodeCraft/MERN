@@ -88,6 +88,11 @@ import Success from '../pages/Success'
 import Cancel from '../pages/Cancel'
 import OrderPage from '../pages/OrderPage'
 import AllOrder from '../pages/AllOrder'
+<<<<<<< HEAD
+=======
+import Address from '../pages/Address'
+import Contact from '../pages/Contact'
+>>>>>>> master
 
 const router = createBrowserRouter([
     {
@@ -119,6 +124,10 @@ const router = createBrowserRouter([
                 element : <ProductDetails/>
             },
             {
+                path : "shipping",
+                element : <Address/>
+            },
+            {
                 path : 'cart',
                 element : <Cart/>
             },
@@ -139,6 +148,13 @@ const router = createBrowserRouter([
                 element : <OrderPage/>
             },
             {
+<<<<<<< HEAD
+=======
+                path : 'contact',
+                element : <Contact/>
+            },
+            {
+>>>>>>> master
                 path : "admin-panel",
                 element : <AdminPanel/>,
                 children : [

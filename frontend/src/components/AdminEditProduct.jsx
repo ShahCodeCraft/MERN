@@ -98,16 +98,16 @@ const AdminEditProduct = ({
 
   return (
     <div className='fixed w-full  h-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center'>
-    <div className='bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden'>
+    <div className='bg-white dark:bg-black p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden'>
 
          <div className='flex justify-between items-center pb-3'>
              <h2 className='font-bold text-lg'>Edit Product</h2>
-             <div className='w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer' onClick={onClose}>
+             <div className='w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer text-black dark:text-white' onClick={onClose}>
                  <CgClose/>
              </div>
          </div>
 
-       <form className='grid p-4 gap-2 overflow-y-scroll h-full pb-5' onSubmit={handleSubmit}>
+       <form className='grid p-4 gap-2 overflow-y-scroll h-full pb-5 text-black dark:text-white bg-white dark:bg-black' onSubmit={handleSubmit}>
          <label htmlFor='productName'>Product Name :</label>
          <input 
            type='text' 
@@ -116,7 +116,7 @@ const AdminEditProduct = ({
            name='productName'
            value={data.productName} 
            onChange={handleOnChange}
-           className='p-2 bg-slate-100 border rounded'
+           className='p-2 bg-slate-100 dark:bg-slate-900 border rounded'
            required
          />
 
@@ -129,12 +129,12 @@ const AdminEditProduct = ({
            value={data.brandName} 
            name='brandName'
            onChange={handleOnChange}
-           className='p-2 bg-slate-100 border rounded'
+           className='p-2 bg-slate-100 dark:bg-slate-900 border rounded'
            required
          />
 
            <label htmlFor='category' className='mt-3'>Category :</label>
-           <select required value={data.category} name='category' onChange={handleOnChange} className='p-2 bg-slate-100 border rounded'>
+           <select required value={data.category} name='category' onChange={handleOnChange} className='p-2 bg-slate-100 dark:bg-slate-900 border rounded'>
                <option value={""}>Select Category</option>
                {
                  productCategory.map((el,index)=>{
@@ -147,7 +147,7 @@ const AdminEditProduct = ({
 
            <label htmlFor='productImage' className='mt-3'>Product Image :</label>
            <label htmlFor='uploadImageInput'>
-           <div className='p-2 bg-slate-100 border rounded h-32 w-full flex justify-center items-center cursor-pointer'>
+           <div className='p-2 bg-slate-100 dark:bg-slate-900 border rounded h-32 w-full flex justify-center items-center cursor-pointer'>
                      <div className='text-slate-500 flex justify-center items-center flex-col gap-2'>
                        <span className='text-4xl'><FaCloudUploadAlt/></span>
                        <p className='text-sm'>Upload Product Image</p>
@@ -198,7 +198,7 @@ const AdminEditProduct = ({
              value={data.price} 
              name='price'
              onChange={handleOnChange}
-             className='p-2 bg-slate-100 border rounded'
+             className='p-2 bg-slate-100 dark:bg-slate-900 border rounded'
              required
            />
 
@@ -211,13 +211,13 @@ const AdminEditProduct = ({
              value={data.sellingPrice} 
              name='sellingPrice'
              onChange={handleOnChange}
-             className='p-2 bg-slate-100 border rounded'
+             className='p-2 bg-slate-100 dark:bg-slate-900 border rounded'
              required
            />
 
            <label htmlFor='description' className='mt-3'>Description :</label>
            <textarea 
-             className='h-28 bg-slate-100 border resize-none p-1' 
+             className='h-28 bg-slate-100 dark:bg-slate-900 border resize-none p-1' 
              placeholder='enter product description' 
              rows={3} 
              onChange={handleOnChange} 

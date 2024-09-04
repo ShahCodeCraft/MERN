@@ -38,10 +38,10 @@ const AllUsers = () => {
     },[])
 
   return (
-    <div className='bg-white pb-4'>
-        <table className='w-full userTable'>
+    <div className='bg-white dark:bg-black pb-4'>
+        <table className='w-full userTable bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100 '>
             <thead>
-                <tr className='bg-black text-white'>
+                <tr className=''>
                     <th>Sr.</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -61,7 +61,7 @@ const AllUsers = () => {
                                 <td>{el?.role}</td>
                                 <td>{moment(el?.createdAt).format('LL')}</td>
                                 <td>
-                                    <button className='bg-green-100 p-2 rounded-full cursor-pointer hover:bg-green-500 hover:text-white' 
+                                    <button className='bg-gray-300 text-gray-800 dark:bg-gray-500 dark:text-gray-100 p-2 rounded-full cursor-pointer hover:bg-green-500 hover:text-white dark:hover:bg-green-500 dark:hover:text-white' 
                                     onClick={()=>{
                                         setUpdateUserDetails(el)
                                         setOpenUpdateRole(true)

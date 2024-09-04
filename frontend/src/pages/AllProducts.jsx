@@ -22,13 +22,13 @@ const AllProducts = () => {
   
   return (
     <div>
-        <div className='bg-white py-2 px-4 flex justify-between items-center'>
+        <div className='bg-white dark:bg-black py-2 px-4 flex justify-between items-center'>
             <h2 className='font-bold text-lg'>All Product</h2>
-            <button  className='border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-all py-1 px-3 rounded-full ' onClick={()=>setOpenUploadProduct(true)}>Upload Product</button>
+            <button  className='border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-all py-1 px-3 rounded-full dark:bg-white dark:hover:bg-red-500 ' onClick={()=>setOpenUploadProduct(true)}>Upload Product</button>
         </div>
 
         {/**all product */}
-        <div className='flex items-center flex-wrap gap-5 py-4 h-[calc(100vh-190px)] overflow-y-scroll'>
+        <div className='flex items-center flex-wrap gap-5 py-4 h-[calc(100vh-190px)] overflow-y-scroll bg-gray-300 dark:bg-black'>
           {
             allProduct.map((product,index)=>{
               return(
