@@ -36,8 +36,4 @@ const orderSchema = new mongoose.Schema({
 
 const orderModel = mongoose.model('order',orderSchema)
 
-<<<<<<< HEAD
 module.exports = orderModel
-=======
-module.exports = orderModel
->>>>>>> master

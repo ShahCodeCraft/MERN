@@ -21,8 +21,4 @@ const orderController = async(request,response)=>{
     }
 }
 
-<<<<<<< HEAD
 module.exports = orderController
-=======
-module.exports = orderController
->>>>>>> master
