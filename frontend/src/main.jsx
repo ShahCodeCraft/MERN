@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { store } from './store/store.js'
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import Layout from './components/Layout.jsx';
+import ConsultancyForm from './pages/ConsultancyForm.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
       <Provider store={store}>
         <Layout>
           <RouterProvider router={router} />
+        <ConsultancyForm/>
         </Layout>
       </Provider>
     </ThemeProvider>

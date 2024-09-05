@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import SummaryApi from '../common'
+import SummaryApi from '../common';
 import { FcFeedback } from "react-icons/fc";
-import contact_globe from "../assest/contact_globe.svg"
+import contact_globe from "../assest/contact_globe.svg";
 
 const ConsultancyForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,81 +22,56 @@ const ConsultancyForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     // Send form data to backend API
-  //     const response = await axios.post(SummaryApi.feedBack.url);
-  //     alert(response.data.message);
-
-  //     // Reset form data
-  //     setFormData({
-  //       name: '',
-  //       email: '',
-  //       service: '',
-  //       inquiry: ''
-  //     });
-
-  //     // Toggle form visibility
-  //     toggleForm();
-  //   } catch (err) {
-  //     console.error('Error submitting form:', err);
-  //     alert('An error occurred while submitting the form.');
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-        // Send form data to backend API
-        const response = await fetch(SummaryApi.feedBack.url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
+      // Send form data to backend API
+      const response = await fetch(SummaryApi.feedBack.url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Parse the response data
+      const responseData = await response.json();
+
+      // Handle success or failure
+      if (responseData.success) {
+        alert(responseData.message);
+
+        // Reset form data
+        setFormData({
+          name: '',
+          email: '',
+          service: '',
+          inquiry: ''
         });
 
-        // Parse the response data
-        const responseData = await response.json();
-
-        // Handle success or failure
-        if (responseData.success) {
-            alert(responseData.message);
-
-            // Reset form data
-            setFormData({
-                name: '',
-                email: '',
-                service: '',
-                inquiry: ''
-            });
-
-            // Toggle form visibility
-            toggleForm();
-        } else {
-            alert('An error occurred: ' + responseData.message);
-        }
+        // Toggle form visibility
+        toggleForm();
+      } else {
+        alert('An error occurred: ' + responseData.message);
+      }
     } catch (err) {
-        console.error('Error submitting form:', err);
-        alert('An error occurred while submitting the form.');
+      console.error('Error submitting form:', err);
+      alert('An error occurred while submitting the form.');
     }
-};
-
+  };
 
   return (
-    <div className="relative min-h-screen bg-gray-100">
+    <div className="relative">
       {/* Feedback Button */}
       <button
         onClick={toggleForm}
-        className="fixed -right-10 top-1/2 transform -translate-y-1/2 -rotate-90 bg-blue-600 text-white px-3 py-1  rounded-r-lg shadow-lg hover:bg-blue-700 flex gap-2 z-50"
+        className="fixed -right-10 top-1/2 transform -translate-y-1/2 -rotate-90 bg-blue-600 text-white px-3 py-1 rounded-r-lg shadow-lg hover:bg-blue-700 flex gap-2 z-50"
       >
         Feedback <FcFeedback className='mt-1' />
-
       </button>
 
-      {/* Full-Screen Container */}
+      {/* Popup Form */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="relative flex flex-col md:flex-row bg-white w-full h-full md:h-auto md:max-w-4xl rounded-xl shadow-lg overflow-hidden">
@@ -109,34 +84,24 @@ const ConsultancyForm = () => {
             </button>
 
             {/* Left Section with Image */}
-
-            {/* <div className="relative hidden md:block w-full md:w-1/2 bg-blue-500 bg-center bg-no-repeat bg-cover rotating-bg bg-rotate-wrapper" >
+            <div className="relative hidden md:block w-full md:w-1/2 bg-blue-500 bg-center bg-no-repeat bg-cover rotating-bg bg-rotate-wrapper">
+              <div className="absolute inset-0 rotate-image">
+                <img
+                  src={contact_globe}
+                  alt="Rotating Background"
+                  className="w-full h-full object-cover p-4"
+                />
+              </div>
               <img
                 src="https://softxai.com/assets/img/about/superman_3d.png"
                 alt="Consultancy"
-                className="w-full h-full object-scale-down"
+                className="w-full h-full object-scale-down relative z-10"
               />
-              
-            </div> */}
-            <div className="relative hidden md:block w-full md:w-1/2 bg-blue-500 bg-center bg-no-repeat bg-cover rotating-bg bg-rotate-wrapper">
-  <div className="absolute inset-0 rotate-image">
-    <img
-      src={contact_globe}
-      alt="Rotating Background"
-      className="w-full h-full object-cover p-4"
-    />
-  </div>
-  <img
-    src="https://softxai.com/assets/img/about/superman_3d.png"
-    alt="Consultancy"
-    className="w-full h-full object-scale-down relative z-10"
-  />
-</div>
-
+            </div>
 
             {/* Right Section with Form */}
             <div className="w-full md:w-1/2 p-8 flex items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-              <div className="w-full ">
+              <div className="w-full">
                 <h2 className="text-2xl md:text-3xl font-semibold text-center mb-6 text-gray-900 dark:text-gray-100">
                   Request Free Consultancy
                 </h2>
@@ -212,5 +177,4 @@ const ConsultancyForm = () => {
   );
 };
 
-export default ConsultancyForm;
-
+export default ConsultancyForm

@@ -3,18 +3,12 @@ import './App.css'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import SummaryApi from './common';
 import Context from './context';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from './store/userSlice';
-// import Address from './pages/Address'
-
-import ConsultancyForm from './pages/ConsultancyForm'
-import About from './pages/About'
 
 function App() {
   const dispatch = useDispatch()
@@ -71,8 +65,6 @@ const fetchUserAddToCart = async()=>{
           </main>
         <Footer/>
         {/* <Address/> */}
-        <About/>
-        <ConsultancyForm/>
       </Context.Provider>
    </>
   )

@@ -60,7 +60,7 @@ const Header = () => {
   };
 
   return (
-    <header className='h-16 fixed w-full z-50 bg-white backdrop-filter backdrop-blur-md flex'>
+    <header className='h-16 fixed w-full z-50 bg-gray-50 dark:bg-gray-800 backdrop-filter backdrop-blur-md flex'>
       <div className='container mx-auto flex items-center justify-center lg:justify-between  px-4'>
         <div className='hidden lg:flex'>
           <Link to={"/"}>
@@ -72,7 +72,7 @@ const Header = () => {
           <input 
             type='text' 
             placeholder='search product here...' 
-            className='w-full outline-none text-black dark:text-white' 
+            className='w-full outline-none bg-gray-50 dark:bg-gray-800 ps-1' 
             onChange={handleSearch} 
             value={search} 
           />
@@ -88,14 +88,13 @@ const Header = () => {
       <div className='block lg:hidden'>
       <Link 
             to={"/"} 
-            className='whitespace-nowrap hover:bg-slate-100 dark:hover:bg-gray-700 p-2 text-black dark:text-white flex' 
-            onClick={() => setMenuDisplay(prev => !prev)}
+            className='whitespace-nowrap hover:bg-slate-200 dark:hover:bg-gray-800 p-2 bg-gray-200 dark:bg-gray-900 flex rounded-md'  
           >
           <BiSolidShoppingBags className='mt-1 me-1' /> Home
           </Link>
       </div>
             {user?._id && (
-              <div className='text-3xl cursor-pointer relative flex justify-center text-black dark:text-white' onClick={() => setMenuDisplay(prev => !prev)}>
+              <div className='text-3xl ps-1 cursor-pointer relative flex justify-center text-black dark:text-white' onClick={() => setMenuDisplay(prev => !prev)}>
                 {user?.profilePic ? (
                   <img src={user?.profilePic} className='w-10 h-10 rounded-full' alt={user?.name} />
                 ) : (
@@ -127,7 +126,7 @@ const Header = () => {
           </div>
           {user?._id && (
             <Link to={"/cart"} className='text-2xl relative text-black dark:text-white'>
-              <span className='text-black dark:text-black'><FaShoppingCart /></span>
+              <span className='text-gray-900 dark:text-gray-100'><FaShoppingCart /></span>
               <div className='bg-red-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
                 <p className='text-sm'>{context?.cartProductCount}</p>
               </div>

@@ -166,7 +166,7 @@ const Cart = () => {
                         ) : (
                           data.map((product,index)=>{
                            return(
-                            <div key={product?._id+"Add To Cart Loading"} className='w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]'>
+                            <div key={product?._id+"Add To Cart Loading"} className='w-full bg-white dark:bg-gray-900 h-32 my-2 border border-slate-300 dark:border-slate-500  rounded grid grid-cols-[128px,1fr]'>
                                 <div className='w-32 h-32 bg-slate-200'>
                                     <img src={product?.productId?.productImage[0]} className='w-full h-full object-scale-down mix-blend-multiply' />
                                 </div>
@@ -179,8 +179,8 @@ const Cart = () => {
                                     <h2 className='text-lg lg:text-xl text-ellipsis line-clamp-1'>{product?.productId?.productName}</h2>
                                     <p className='capitalize text-slate-500'>{product?.productId.category}</p>
                                     <div className='flex items-center justify-between'>
-                                            <p className='text-red-600 font-medium text-lg'>{displayINRCurrency(product?.productId?.sellingPrice)}</p>
-                                            <p className='text-slate-600 font-semibold text-lg'>{displayINRCurrency(product?.productId?.sellingPrice  * product?.quantity)}</p>
+                                            <p className='text-red-600 dark:text-gray-300 font-medium text-lg'>{displayINRCurrency(product?.productId?.sellingPrice)}</p>
+                                            <p className='text-slate-600 dark:text-slate-400 font-semibold text-lg'>{displayINRCurrency(product?.productId?.sellingPrice  * product?.quantity)}</p>
                                     </div>
                                     <div className='flex items-center gap-3 mt-1'>
                                         <button className='border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded ' onClick={()=>decraseQty(product?._id,product?.quantity)}>-</button>
@@ -206,14 +206,14 @@ const Cart = () => {
                                 
                             </div>
                             ) : (
-                                <div className='h-36 bg-white'>
+                                <div className='h-36 bg-gray-100 text-gray-700 dark:text-slate-300 dark:bg-black'>
                                     <h2 className='text-white bg-red-600 px-4 py-1'>Summary</h2>
-                                    <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
+                                    <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg'>
                                         <p>Quantity</p>
                                         <p>{totalQty}</p>
                                     </div>
 
-                                    <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600'>
+                                    <div className='flex items-center justify-between px-4 gap-2 font-medium text-lg'>
                                         <p>Total Price</p>
                                         <p>{displayINRCurrency(totalPrice)}</p>    
                                     </div>
