@@ -9,7 +9,7 @@ const ThemeSwitcher = () => {
 
   return (
     <div
-      className="flex justify-end items-center gap-1"
+      className="grid-col lg:flex justify-end items-center gap-1 mt-3 lg:mt-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

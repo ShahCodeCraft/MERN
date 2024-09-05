@@ -13,6 +13,7 @@ import Context from '../context';
 import ThemeSwitcher from './ThemeSwitcher';
 
 import { BiSolidShoppingBags } from "react-icons/bi";
+import { MdContactPhone } from "react-icons/md";
 
 import shahStore from "../assest/banner/shah_store1.png";
 
@@ -26,6 +27,7 @@ const Header = () => {
   const URLSearch = new URLSearchParams(searchInput?.search);
   const searchQuery = URLSearch.getAll("q");
   const [search, setSearch] = useState(searchQuery);
+  
 
   const handleLogout = async () => {
     const fetchData = await fetch(SummaryApi.logout_user.url, {
@@ -59,8 +61,8 @@ const Header = () => {
 
   return (
     <header className='h-16 fixed w-full z-50 bg-white backdrop-filter backdrop-blur-md flex'>
-      <div className='container mx-auto flex items-center justify-between px-4'>
-        <div>
+      <div className='container mx-auto flex items-center justify-center lg:justify-between  px-4'>
+        <div className='hidden lg:flex'>
           <Link to={"/"}>
             <img src={shahStore} className='h-[54px] w-[78px] object-cover' alt='Shah Store' />
           </Link>
@@ -79,21 +81,19 @@ const Header = () => {
           </div>
         </div>
 
-        <div className='flex items-center gap-7'>
-        {user?._id && (
-          <Link to={"/order"} className='whitespace-nowrap hidden md:flex bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:bg-gray-700 px-2 py-1 text-gray-700 dark:text-gray-100 rounded-md' onClick={() => setMenuDisplay(prev => !prev)}>
-          <BiSolidShoppingBags className='mt-1 me-1' /> Orders 
+    <div className='flex items-center gap-7'>
+
+        
+    <div className='relative flex justify-center'>
+      <div className='block lg:hidden'>
+      <Link 
+            to={"/"} 
+            className='whitespace-nowrap hover:bg-slate-100 dark:hover:bg-gray-700 p-2 text-black dark:text-white flex' 
+            onClick={() => setMenuDisplay(prev => !prev)}
+          >
+          <BiSolidShoppingBags className='mt-1 me-1' /> Home
           </Link>
-        )}
-
-        <div>
-          <Link to={"/contact"} className='whitespace-nowrap hidden md:block bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:bg-gray-700 px-2 py-1 text-gray-700 dark:text-gray-100 rounded-md' onClick={() => setMenuDisplay(prev => !prev)}>
-            Contact
-          </Link>
-        </div>
-
-
-<div className='relative flex justify-center'>
+      </div>
             {user?._id && (
               <div className='text-3xl cursor-pointer relative flex justify-center text-black dark:text-white' onClick={() => setMenuDisplay(prev => !prev)}>
                 {user?.profilePic ? (
@@ -112,6 +112,15 @@ const Header = () => {
                       Admin Panel
                     </Link>
                   )}
+                  {(user?.role === ROLE.ADMIN || user?.role === ROLE.GENERAL) && (
+          <Link 
+            to={"/order"} 
+            className='whitespace-nowrap hover:bg-slate-100 dark:hover:bg-gray-700 p-2 text-black dark:text-white flex' 
+            onClick={() => setMenuDisplay(prev => !prev)}
+          >
+          <BiSolidShoppingBags className='mt-1 me-1' /> My-Order
+          </Link>
+        )}
                 </nav>
               </div>
             )}
@@ -136,10 +145,17 @@ const Header = () => {
               </Link>
             )}
           </div>
-          {/* Adding Theme Switcher */}
+          
         </div>
+        
       </div>
-<ThemeSwitcher />
+      <div className='hidden lg:flex p-4 '>
+          <Link to={"/contact"} className='whitespace-nowrap flex bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 dark:bg-gray-700 px-2 py-1 text-gray-700 dark:text-gray-100 rounded-md' onClick={() => setMenuDisplay(prev => !prev)}>
+          <MdContactPhone className='mt-1 me-1'/>Contact
+          </Link>
+        </div>
+         {/* Adding Theme Switcher */}
+         <ThemeSwitcher />
     </header>
   );
 };
