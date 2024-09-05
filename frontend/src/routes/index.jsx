@@ -52,11 +52,11 @@ const router = createBrowserRouter([
                 element : <Address/>
             },
             {
-                path : 'cart',
+                path : "cart",
                 element : <Cart/>
             },
             {
-                path : 'success',
+                path : "success",
                 element : <Success/>
             },
             {
