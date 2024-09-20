@@ -3,7 +3,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 dark:bg-gray-900-900 px-4 sm:px-6 lg:px-8 border border-gray-950 shadow-lg">
+    <div className="min-h-screen sm:mt-0 mt-8 flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 dark:bg-gray-900-900 px-4 sm:px-6 lg:px-8 border border-gray-950 shadow-lg">
       <div className="text-center transform transition duration-700 ease-out animate-fadeInUp">
         <h1 className="text-4xl font-extrabold sm:text-5xl">
           Welcome to Our Store!

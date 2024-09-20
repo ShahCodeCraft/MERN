@@ -17,6 +17,7 @@ import OrderPage from '../pages/OrderPage'
 import AllOrder from '../pages/AllOrder'
 import Address from '../pages/Address'
 import Contact from '../pages/Contact'
+import About from '../pages/About'
 
 const router = createBrowserRouter([
     {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
             {
                 path : 'contact',
                 element : <Contact/>
+            },
+            {
+                path : 'about',
+                element : <About/>
             },
             {
                 path : "admin-panel",

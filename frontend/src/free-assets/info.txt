@@ -1,0 +1,21 @@
+===== Colors =====
+Primary Text: #FFFFFF
+Secondary Text: #adaab0
+Text: #A9A9A9
+Dark Text: #101010
+Primary Background: #0e0e0f
+Secondary Background: #181818
+Accent Red: #e10007
+Dark Red: #a10409
+Border: #333338
+
+===== Fonts =====
+Primary: Sora, sans-serif
+Secondary: Inter, sans-serif
+
+===== Custom Code =====
+CSS: https://gist.github.com/306be8c12947ed079235e0249c7397fa.git
+JS: https://gist.github.com/a79f237ee3acd4f30521434676dd9460.git
+
+===== Checkout URL =====
+https://YOUR_WEBSITE_URL/checkout/?add-to-cart=451

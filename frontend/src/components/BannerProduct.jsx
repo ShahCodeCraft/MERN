@@ -361,7 +361,7 @@ const BannerProduct = () => {
         const nextIndex = (headphoneData.findIndex(item => item.id === prevData.id) + 1) % headphoneData.length;
         return headphoneData[nextIndex];
       });
-    }, 3000); // Change the product every 3 seconds
+    }, 50000); // Change the product every 3 seconds
 
     return () => clearInterval(interval); // Clear the interval on component unmount
   }, []);
@@ -371,7 +371,7 @@ const BannerProduct = () => {
       initial={{ backgroundColor: activeData.bgColor }}
       animate={{ backgroundColor: activeData.bgColor }}
       transition={{ duration: 0.8 }}
-      className="bg-brandDark text-white"
+      className="bg-brandDark text-white px-3"
     >
       <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
         {/* ______ Headphone Info ______ */}
