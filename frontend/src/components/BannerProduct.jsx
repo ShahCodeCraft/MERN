@@ -1,96 +1,554 @@
-import React, { useEffect, useState, useContext } from 'react';
-import image1 from '../assest/banner/img1.webp';
-import image2 from '../assest/banner/img2.webp';
-import image3 from '../assest/banner/img3.jpg';
-import image4 from '../assest/banner/img4.jpg';
-import image5 from '../assest/banner/img5.webp';
+// import React from "react";
+// import Fanta1 from "../assest/products/airpodes/boAtAirdopes111.webp";
+// import Fanta2 from "../assest/products/watches/boAtStormCall1.webp";
+// import Fanta3 from "../assest/products/earphones/boAtRockerz510.webp";
+// import { FaWhatsapp } from "react-icons/fa";
+// import { UpdateFollower } from "react-mouse-follower";
+// import { AnimatePresence, easeInOut, motion } from "framer-motion";
+// import { Link } from 'react-router-dom'
 
-import image1Mobile from '../assest/banner/img1_mobile.jpg';
-import image2Mobile from '../assest/banner/img2_mobile.webp';
-import image3Mobile from '../assest/banner/img3_mobile.jpg';
-import image4Mobile from '../assest/banner/img4_mobile.jpg';
-import image5Mobile from '../assest/banner/img5_mobile.png';
+// const SlideRight = (delay) => {
+//   return {
+//     hidden: {
+//       opacity: 0,
+//       x: 100,
+//     },
+//     show: {
+//       opacity: 1,
+//       x: 0,
+//       transition: {
+//         duration: 0.5,
+//         delay: delay,
+//         ease: easeInOut,
+//       },
+//     },
+//     exit: {
+//       opacity: 0,
+//       x: -50,
+//       transition: {
+//         duration: 0.2,
+//         ease: easeInOut,
+//       },
+//     },
+//   };
+// };
 
-import { FaAngleRight, FaAngleLeft } from 'react-icons/fa6';
-import { ThemeContext } from '../context/ThemeContext';
+// const headphoneData = [
+//   {
+//     id: 1,
+//     image: Fanta1,
+//     title: "Airpodes",
+//     subtitle:
+//       "True wireless earbuds with immersive sound, seamless Bluetooth connectivity, long battery life, and a comfortable fit. Perfect for music, calls, and workouts.",
+//       price:"₹999",
+//    sprice: "₹699",
+//     modal: "Pods",
+//     // bgColor: "#001F3F",
+//     bgColor: "#2C3E50",
+//   },
+//   {
+//     id: 2,
+//     image: Fanta2,
+//     title: "Watch",
+//     subtitle:
+//       "An electronic timepiece with a clear digital display. It offers features like alarms, timers, and backlighting, making it both stylish and practical for everyday use.",
+//     price: "₹1699",
+//     sprice: "₹999",
+//     modal: "Watch",
+//     // bgColor: "#333333",
+//     bgColor: "#2C3E50",
+//   },
+//   {
+//     id: 3,
+//     image: Fanta3,
+//     title: "Earphone",
+//     subtitle:
+//       "Headphones are larger devices immersive sound, great for music and gaming, and earphones are fitting directly in the ear for portable, casual listening.",
+//       price: "₹1299",
+//     sprice: "₹799",
+//     modal: "Earph",
+//     bgColor: "#2C3E50",
+//   },
+ 
+// ];
+// const BannerProduct = () => {
+//   const [activeData, setActiveData] = React.useState(headphoneData[0]);
+
+//   const handleActiveData = (data) => {
+//     setActiveData(data);
+//   };
+
+//   return (
+//     <>
+//       <motion.section
+//         initial={{ backgroundColor: activeData.bgColor }}
+//         animate={{ backgroundColor: activeData.bgColor }}
+//         transition={{ duration: 0.8 }}
+//         className="bg-brandDark text-white"
+//       >
+
+//         <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
+//           {/* ______ Headphone Info ______ */}
+//           <div className="flex flex-col justify-center py-14 md:py-0 xl:max-w-[500px] order-2 md:order-1">
+//             <div className="space-y-5 text-center md:text-left">
+//               <AnimatePresence mode="wait">
+//                 <UpdateFollower
+//                   mouseOptions={{
+//                     backgroundColor: "white",
+//                     zIndex: 9999,
+//                     followSpeed: 0.5,
+//                     rotate: -720,
+//                     mixBlendMode: "difference",
+//                     scale: 10,
+//                   }}
+//                 >
+//                   <motion.h1
+//                     key={activeData.id}
+//                     variants={SlideRight(0.2)}
+//                     initial="hidden"
+//                     animate="show"
+//                     exit="exit"
+//                     className="text-3xl lg:text-6xl xl:text-7xl font-bold font-handwriting text-shadow"
+//                   >
+//                     {activeData.title}
+//                   </motion.h1>
+//                 </UpdateFollower>
+//               </AnimatePresence>
+//               <AnimatePresence mode="wait">
+//                 <motion.p
+//                   key={activeData.id}
+//                   variants={SlideRight(0.4)}
+//                   initial="hidden"
+//                   animate="show"
+//                   exit="exit"
+//                   className="text-sm leading-loose text-white/80"
+//                 >
+//                   {activeData.subtitle}
+//                 </motion.p>
+//               </AnimatePresence>
+
+//               <AnimatePresence mode="wait">
+//                 <UpdateFollower
+//                   mouseOptions={{
+//                     backgroundColor: activeData.bgColor,
+//                     zIndex: 9999,
+//                     followSpeed: 0.5,
+//                     rotate: -720,
+//                     scale: 6,
+//                     backgroundElement: (
+//                       <div>
+//                      <img src={activeData.image} /> 
+//                       </div>
+//                     ),
+//                   }}
+//                 >
+//                   <motion.button
+//                     key={activeData.id}
+//                     variants={SlideRight(0.6)}
+//                     initial="hidden"
+//                     animate="show"
+//                     exit="exit"
+//                     style={{ color: activeData.bgColor }}
+//                     className="px-4 py-2 bg-white inline-block font-normal rounded-sm"
+//                   >
+//                    <Link to={"/"} >Order Now</Link>
+//                   </motion.button>
+//                 </UpdateFollower>
+//               </AnimatePresence>
+
+//               {/* ______ Headphone List Separator ______ */}
+
+//               <motion.div
+//                 initial={{ opacity: 0 }}
+//                 animate={{ opacity: 1 }}
+//                 transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
+//                 className="flex items-center justify-center md:justify-start gap-4 !md:mt-24 !mb-10"
+//               >
+//                 <div className="w-20 h-[1px] bg-white"></div>
+//                 <p className="uppercase text-sm ">Top Recommendation</p>
+//                 <div className="w-20 h-[1px] bg-white"></div>
+//               </motion.div>
+
+//               {/* Headphone list switcher */}
+//               <motion.div
+//                 initial={{ opacity: 0 }}
+//                 animate={{ opacity: 1 }}
+//                 transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
+//                 className="grid grid-cols-3 gap-10"
+//               >
+//                 {headphoneData.map((item) => {
+//                   return (
+//                     <UpdateFollower
+//                       mouseOptions={{
+//                         backgroundColor: item.bgColor,
+//                         zIndex: 9999,
+//                         followSpeed: 0.5,
+//                         scale: 5,
+//                         text: "View Details",
+//                         textFontSize: "3px",
+//                       }}
+//                     >
+//                       <div
+//                         key={item.id}
+//                         onClick={() => handleActiveData(item)}
+//                         className="cursor-pointer space-y-3 hover:scale-105 transition-all"
+//                       >
+//                         <div className="flex justify-center">
+//                           <img
+//                             src={item.image}
+//                             alt=""
+//                             className={`w-[80px] img-shadow ${
+//                               activeData.image === item.image
+//                                 ? "opacity-100 scale-110"
+//                                 : "opacity-50"
+//                             }`}
+//                           />
+//                         </div>
+//                         <div className="!mt-6 space-y-1 text-center">
+//                           <p className="text-base line-through opacity-50">
+//                             {item.price}
+//                           </p>
+//                           <p className="text-xl font-bold">{item.sprice}</p>
+//                           {/* <p className="text-xs font-normal text-nowrap">
+//                             {item.modal}
+//                           </p> */}
+//                         </div>
+//                       </div>
+//                     </UpdateFollower>
+//                   );
+//                 })}
+//               </motion.div>
+//             </div>
+//           </div>
+
+//           {/* ______ Hero Image ______ */}
+//           <div className="flex flex-col justify-end items-center relative order-1 md:order-2 ">
+//             <AnimatePresence mode="wait">
+//               <motion.img
+//                 key={activeData.id}
+//                 initial={{ opacity: 0, x: 100 }}
+//                 animate={{ opacity: 1, x: 0 }}
+//                 transition={{ duration: 0.4, delay: 0, ease: easeInOut }}
+//                 exit={{
+//                   opacity: 0,
+//                   // scale: 0.9,
+//                   x: -100,
+
+//                   transition: {
+//                     duration: 0.4,
+//                   },
+//                 }}
+//                 src={activeData.image}
+//                 alt=""
+//                 className="w-[150px] md:w-[200px] xl:w-[350px] img-shadow relative z-10"
+//               />
+//             </AnimatePresence>
+//             <AnimatePresence mode="wait">
+//               <motion.div
+//                 key={activeData.id}
+//                 initial={{ opacity: 0 }}
+//                 animate={{ opacity: 1 }}
+//                 transition={{ duration: 0.4, delay: 0, ease: easeInOut }}
+//                 exit={{
+//                   opacity: 0,
+//                   // scale: 0.9,
+
+//                   transition: {
+//                     duration: 0.4,
+//                   },
+//                 }}
+//                 className="text-white/5 text-[300px] font-poppins font-extrabold absolute top-0 left-1/2 -translate-x-1/2 z-0"
+//               >
+//                 {activeData.modal}
+//               </motion.div>
+//             </AnimatePresence>
+//           </div>
+//           {/* ______ WhatsApp Icon ______ */}
+//           <div className="text-3xl text-white fixed bottom-10 right-10 hover:rotate-[360deg] duration-500 z-[99999] mix-blend-difference">
+//             <a href="">
+//               <FaWhatsapp />
+//             </a>
+//           </div>
+//         </div>
+//       </motion.section>
+//     </>
+//   );
+// };
+
+// export default BannerProduct;
+
+import React, { useEffect } from "react";
+import Fanta1 from "../assest/products/airpodes/boAtAirdopes111.webp";
+import Fanta2 from "../assest/products/watches/boAtStormCall1.webp";
+import Fanta3 from "../assest/products/earphones/boAtRockerz510.webp";
+import { FaWhatsapp } from "react-icons/fa";
+import { UpdateFollower } from "react-mouse-follower";
+import { AnimatePresence, easeInOut, motion } from "framer-motion";
+import { Link } from 'react-router-dom'
+
+const SlideRight = (delay) => {
+  return {
+    hidden: {
+      opacity: 0,
+      x: 100,
+    },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        delay: delay,
+        ease: easeInOut,
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: -50,
+      transition: {
+        duration: 0.2,
+        ease: easeInOut,
+      },
+    },
+  };
+};
+
+const headphoneData = [
+  {
+    id: 1,
+    image: Fanta1,
+    title: "Airpodes",
+    subtitle:
+      "True wireless earbuds with immersive sound, seamless Bluetooth connectivity, long battery life, and a comfortable fit. Perfect for music, calls, and workouts.",
+    price: "₹999",
+    sprice: "₹699",
+    modal: "Pods",
+    bgColor: "#2C3E50",
+  },
+  {
+    id: 2,
+    image: Fanta2,
+    title: "Watch",
+    subtitle:
+      "An electronic timepiece with a clear digital display. It offers features like alarms, timers, and backlighting, making it both stylish and practical for everyday use.",
+    price: "₹1699",
+    sprice: "₹999",
+    modal: "Watch",
+    bgColor: "#2C3E50",
+  },
+  {
+    id: 3,
+    image: Fanta3,
+    title: "Earphone",
+    subtitle:
+      "Headphones are larger devices immersive sound, great for music and gaming, and earphones are fitting directly in the ear for portable, casual listening.",
+    price: "₹1299",
+    sprice: "₹799",
+    modal: "Earph",
+    bgColor: "#2C3E50",
+  },
+];
 
 const BannerProduct = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  const { theme } = useContext(ThemeContext); // Use the theme from the ThemeContext
+  const [activeData, setActiveData] = React.useState(headphoneData[0]);
 
-  const desktopImages = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-  ];
-
-  const mobileImages = [
-    image1Mobile,
-    image2Mobile,
-    image3Mobile,
-    image4Mobile,
-    image5Mobile,
-  ];
-
-  const nextImage = () => {
-    if (desktopImages.length - 1 > currentImage) {
-      setCurrentImage((prev) => prev + 1);
-    }
-  };
-
-  const prevImage = () => {
-    if (currentImage !== 0) {
-      setCurrentImage((prev) => prev - 1);
-    }
+  const handleActiveData = (data) => {
+    setActiveData(data);
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (desktopImages.length - 1 > currentImage) {
-        nextImage();
-      } else {
-        setCurrentImage(0);
-      }
-    }, 5000);
+      setActiveData((prevData) => {
+        const nextIndex = (headphoneData.findIndex(item => item.id === prevData.id) + 1) % headphoneData.length;
+        return headphoneData[nextIndex];
+      });
+    }, 3000); // Change the product every 3 seconds
 
-    return () => clearInterval(interval);
-  }, [currentImage]);
+    return () => clearInterval(interval); // Clear the interval on component unmount
+  }, []);
 
   return (
-    <div className={`container mx-auto px-4 rounded ${theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'}`}>
-      <div className={`h-56 md:h-80 w-full ${theme === 'dark' ? 'bg-white' : 'bg-slate-200'} relative`}>
-        <div className='absolute z-10 h-full w-full md:flex items-center hidden'>
-          <div className='flex justify-between w-full text-2xl'>
-            <button onClick={prevImage} className={`shadow-md rounded-full p-1 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
-              <FaAngleLeft />
-            </button>
-            <button onClick={nextImage} className={`shadow-md rounded-full p-1 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
-              <FaAngleRight />
-            </button>
+    <motion.section
+      initial={{ backgroundColor: activeData.bgColor }}
+      animate={{ backgroundColor: activeData.bgColor }}
+      transition={{ duration: 0.8 }}
+      className="bg-brandDark text-white"
+    >
+      <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
+        {/* ______ Headphone Info ______ */}
+        <div className="flex flex-col justify-center py-14 md:py-0 xl:max-w-[500px] order-2 md:order-1">
+          <div className="space-y-5 text-center md:text-left">
+            <AnimatePresence mode="wait">
+              <UpdateFollower
+                mouseOptions={{
+                  backgroundColor: "white",
+                  zIndex: 9999,
+                  followSpeed: 0.5,
+                  rotate: -720,
+                  mixBlendMode: "difference",
+                  scale: 10,
+                }}
+              >
+                <motion.h1
+                  key={activeData.id}
+                  variants={SlideRight(0.2)}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  className="text-3xl lg:text-6xl xl:text-7xl font-bold font-handwriting text-shadow"
+                >
+                  {activeData.title}
+                </motion.h1>
+              </UpdateFollower>
+            </AnimatePresence>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={activeData.id}
+                variants={SlideRight(0.4)}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                className="text-sm leading-loose text-white/80"
+              >
+                {activeData.subtitle}
+              </motion.p>
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+              <UpdateFollower
+                mouseOptions={{
+                  backgroundColor: activeData.bgColor,
+                  zIndex: 9999,
+                  followSpeed: 0.5,
+                  rotate: -720,
+                  scale: 6,
+                  backgroundElement: (
+                    <div>
+                      <img src={activeData.image} />
+                    </div>
+                  ),
+                }}
+              >
+                <motion.button
+                  key={activeData.id}
+                  variants={SlideRight(0.6)}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  style={{ color: activeData.bgColor }}
+                  className="px-4 py-2 bg-white inline-block font-normal rounded-sm"
+                >
+                  <Link to={"/"}>Order Now</Link>
+                </motion.button>
+              </UpdateFollower>
+            </AnimatePresence>
+
+            {/* ______ Headphone List Separator ______ */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
+              className="flex items-center justify-center md:justify-start gap-4 !md:mt-24 !mb-10"
+            >
+              <div className="w-20 h-[1px] bg-white"></div>
+              <p className="uppercase text-sm">Top Recommendation</p>
+              <div className="w-20 h-[1px] bg-white"></div>
+            </motion.div>
+
+            {/* Headphone list switcher */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
+              className="grid grid-cols-3 gap-10"
+            >
+              {headphoneData.map((item) => (
+                <UpdateFollower
+                  mouseOptions={{
+                    backgroundColor: item.bgColor,
+                    zIndex: 9999,
+                    followSpeed: 0.5,
+                    scale: 5,
+                    text: "View Details",
+                    textFontSize: "3px",
+                  }}
+                  key={item.id}
+                >
+                  <div
+                    onClick={() => handleActiveData(item)}
+                    className="cursor-pointer space-y-3 hover:scale-105 transition-all"
+                  >
+                    <div className="flex justify-center">
+                      <img
+                        src={item.image}
+                        alt=""
+                        className={`w-[80px] img-shadow ${
+                          activeData.image === item.image
+                            ? "opacity-100 scale-110"
+                            : "opacity-50"
+                        }`}
+                      />
+                    </div>
+                    <div className="!mt-6 space-y-1 text-center">
+                      <p className="text-base line-through opacity-50">
+                        {item.price}
+                      </p>
+                      <p className="text-xl font-bold">{item.sprice}</p>
+                    </div>
+                  </div>
+                </UpdateFollower>
+              ))}
+            </motion.div>
           </div>
         </div>
 
-        {/** Desktop and tablet version */}
-        <div className='hidden md:flex h-full w-full overflow-hidden'>
-          {desktopImages.map((imageUrl, index) => (
-            <div className='w-full h-full min-w-full min-h-full transition-all' key={imageUrl} style={{ transform: `translateX(-${currentImage * 100}%)` }}>
-              <img src={imageUrl} className='w-full h-full' alt={`slide ${index + 1}`} />
-            </div>
-          ))}
+        {/* ______ Hero Image ______ */}
+        <div className="flex flex-col justify-end items-center relative order-1 md:order-2">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={activeData.id}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0, ease: easeInOut }}
+              exit={{
+                opacity: 0,
+                x: -100,
+                transition: {
+                  duration: 0.4,
+                },
+              }}
+              src={activeData.image}
+              alt=""
+              className="w-[150px] md:w-[200px] xl:w-[350px] img-shadow relative z-10"
+            />
+          </AnimatePresence>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeData.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0, ease: easeInOut }}
+              exit={{
+                opacity: 0,
+                transition: {
+                  duration: 0.4,
+                },
+              }}
+              className="text-white/5 text-[300px] font-poppins font-extrabold absolute bottom-0 right-0 pointer-events-none"
+            >
+              {activeData.modal}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/** Mobile version */}
-        <div className='flex h-full w-full overflow-hidden md:hidden'>
-          {mobileImages.map((imageUrl, index) => (
-            <div className='w-full h-full min-w-full min-h-full transition-all' key={imageUrl} style={{ transform: `translateX(-${currentImage * 100}%)` }}>
-              <img src={imageUrl} className='w-full h-full object-cover' alt={`slide ${index + 1}`} />
-            </div>
-          ))}
-        </div>
+         {/* ______ WhatsApp Icon ______ */}
+           <div className="text-3xl text-white fixed bottom-10 right-10 hover:rotate-[360deg] duration-500 z-[99999] mix-blend-difference">
+             <a href="">
+               <FaWhatsapp />
+             </a>
+           </div>
+
       </div>
-    </div>
+    </motion.section>
   );
 };
 

@@ -93,7 +93,7 @@ const ConsultancyForm = () => {
                 />
               </div>
               <img
-                src="https://softxai.com/assets/img/about/superman_3d.png"
+                src="http://softxai.com/assets/img/about/superman_3d.png"
                 alt="Consultancy"
                 className="w-full h-full object-scale-down relative z-10"
               />
