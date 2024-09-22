@@ -74,7 +74,7 @@ function AdminPanel() {
     },[user])
 
   return (
-    <div className='min-h-[calc(100vh-120px)] flex bg-red-200' >
+    <div className='min-h-[calc(100vh-120px)] flex bg-red-200 sm:mt-1 mt-10' >
 
       <aside className='bg-gray-100 dark:bg-gray-800 min-h-full  w-full  max-w-60 customShadow'>
               <div className='h-32  flex justify-center items-center flex-col'>

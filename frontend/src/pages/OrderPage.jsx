@@ -23,7 +23,7 @@ const OrderPage = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-gray-100 dark:bg-gray-950 min-h-screen">
+    <div className="sm:mt-0 mt-5 p-6 bg-gray-100 dark:bg-gray-950 min-h-screen">
       {!data[0] && (
         <p className="text-center text-xl text-gray-600 dark:text-gray-400">No Orders Available</p>
       )}

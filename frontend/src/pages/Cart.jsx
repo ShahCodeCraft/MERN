@@ -141,7 +141,7 @@ const Cart = () => {
     const totalQty = data.reduce((previousValue,currentValue)=> previousValue + currentValue.quantity,0)
     const totalPrice = data.reduce((preve,curr)=> preve + (curr.quantity * curr?.productId?.sellingPrice) ,0)
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto sm:mt-0 mt-7'>
         
         <div className='text-center text-lg my-3'>
             {

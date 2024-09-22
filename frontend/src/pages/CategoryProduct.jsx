@@ -93,7 +93,7 @@ const CategoryProduct = () => {
     },[sortBy])
     
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container mx-auto p-4 sm:mt-0 mt-5'>
 
        {/***desktop version */}
        <div className='grid grid-cols-[100px,1fr]  lg:grid lg:grid-cols-[200px,1fr]'>
@@ -140,7 +140,7 @@ const CategoryProduct = () => {
 
 
             {/***right side ( product ) */}
-            <div className='px-4'>
+            <div className='sm:px-4 px-0'>
               <p className='font-medium text-slate-800 dark:text-slate-100 text-lg my-2'>Search Results : {data.length}</p>
 
              <div className='min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]'>
